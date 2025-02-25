@@ -21,7 +21,7 @@ This project is part of an AI internship task. It invlolves Developing an Agenti
 1. Clone the repository to your local machine.
 2. Navigate to the project directory.
 3. Install the required dependencies using `pip install -r requirements.txt`.
-4. Run the scripts or notebooks as needed.
+4. Run the `model.py` script or import it's `getResponse()` function, the project is kept modular therefor no need to import all files in the implementatino or using the Agentic Tool.
 
 ## Dependencies
 
