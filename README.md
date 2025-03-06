@@ -8,7 +8,7 @@ This project is part of an AI internship task. It invlolves Developing an Agenti
 
 ## File Structure
 
-- `/Task-1_ShrivedPatade/Task-1/`
+- `/Stock-Analysis-Chatbot/Task-1/`
     - `README.md`: Project documentation.
     - `lgWorkflow.py`: Creates the Work Flow Graph with LangGraph.
     - `model.py`: Gets User Prompt, Parses the input and uses the necessary tools specified by the user.
