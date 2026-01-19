@@ -5,7 +5,7 @@ load_dotenv()
 
 # API Configurations
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-ALPHA_VANTAGE_KEY = os.getenv("ALPHA_VANTAGE_KEY")
+NEWS_API_KEY = os.getenv("NEWS_API_KEY")
 
 # Analysis Settings
 DEFAULT_PERIOD = "1y"

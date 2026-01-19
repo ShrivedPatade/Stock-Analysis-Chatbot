@@ -1,39 +1,64 @@
-# Task-1_ShrivedPatade
-Shrived Umesh Patade
-shrivedpatade@gmail.com
+# Predictive Stock Analysis System (Hybrid Agentic Pipeline)
 
-## Project Overview
+An advanced financial intelligence tool that fuses **Quantitative technical analysis** with **Qualitative news sentiment** to generate actionable trading signals.
 
-This project is part of an AI internship task. It invlolves Developing an Agentic Tool to perform various analysis operations on the data which are specified by the user in the prompt. It uses Google's Gemini for handeling the inputs and yfinance api to fetch the realtime data from Yahoo finance.
+## 🚀 Key Innovation: The Hybrid AI Architecture
 
-## File Structure
+To overcome API rate limits and maximize analytical precision, this project utilizes a dual-LLM "Brain" strategy:
 
-- `/Stock-Analysis-Chatbot/Task-1/`
-    - `README.md`: Project documentation.
-    - `lgWorkflow.py`: Creates the Work Flow Graph with LangGraph.
-    - `model.py`: Gets User Prompt, Parses the input and uses the necessary tools specified by the user.
-    - `fecthData.py`: Contains function to fetch data from the yfinance api.
-    - `analyzeData.py`: Contains functions to apply different analysis methods over the data.
-    - `plotData.py`: Contains the function that plots the data with the specified analysis.
+* **Local Intelligence (Ollama + Qwen2.5-Finance):** Handles high-volume, repetitive tasks. It parses user intent and performs sentiment analysis on 10+ news headlines locally, ensuring zero-latency and bypassing cloud API quotas.
+* **Cloud Synthesis (Google Gemini 2.5 Flash):** Reserved for the final "Gold Standard" report. It synthesizes the technical data and local sentiment into a high-reasoning, 3-sentence professional analyst summary.
 
-## How to Run
+---
 
-1. Clone the repository to your local machine.
-2. Navigate to the project directory.
-3. Install the required dependencies using `pip install -r requirements.txt`.
-4. Run the `model.py` script or import it's `getResponse()` function, the project is kept modular therefore no need to import all files in the implementatino or using the Agentic Tool.
+## 🏗️ Technical Pipeline Flow
 
-## Dependencies
+The system is built as a stateful graph using **LangGraph**, ensuring a reliable and verifiable data lifecycle:
 
-- Python 3.x
-- pandas
-- numpy
-- matplotlib
-- requests
-- google-generativeai
-- langgraph
-- yfinance
+1. **Intent Parsing:** Local Qwen extracts `Ticker`, `Company Name`, and `Period` from natural language.
+2. **Data Acquisition:** Fetches historical OHLCV data via `yfinance` with advanced browser impersonation (via `curl_cffi`) to prevent rate-limiting.
+3. **Qualitative Retrieval:** Searches **NewsAPI** using the full company name for higher relevancy; results are cached in `retrieved_news.json` for auditing.
+4. **Technical Engine:** Calculates SMA 50/200 and RSI indicators to find "Golden Cross" or "Oversold" entry points.
+5. **Multi-Modal Synthesis:** Merges technical signals with AI sentiment to generate a final recommendation (e.g., "STRONG BUY").
+6. **Visualization:** Generates dual-plot charts (Price + RSI) with specific Buy/Sell markers.
 
-## Contact
+---
 
-For any questions or issues, please contact Shrived Umesh Patade at shrivedpatade@gmail.com.
+## 🛠️ Installation & Setup
+
+### 1. Prerequisites
+
+* **Ollama:** Installed and running locally.
+* **Python 3.10+**
+
+### 2. Local Model Setup
+
+```bash
+# Pull the finance-optimized model for sentiment and parsing
+ollama pull qwen2.5:3b
+
+```
+
+### 3. Environment Configuration
+
+Create a `.env` file in the root directory:
+
+```env
+GEMINI_API_KEY=your_google_ai_key
+NEWS_API_KEY=your_newsapi_org_key
+
+```
+
+### 4. Run the Pipeline
+
+```bash
+python main.py
+
+```
+
+---
+
+## 📈 Performance & Reliability
+
+* **Defensive Engineering:** Includes safety checks at every node to handle missing data or API failures gracefully without crashing.
+* **Multi-Modal Precision:** News sentiment acts as a "filter" for technical signals, reducing false-positive BUY signals during bearish news cycles.

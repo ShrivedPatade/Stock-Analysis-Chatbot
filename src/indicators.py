@@ -4,7 +4,7 @@ def apply_indicators(df: pd.DataFrame):
     # Safety Check: If DataFrame is empty or missing 'Close', return it as is
     if df.empty or 'Close' not in df.columns:
         print("Warning: Skipping indicators - No valid data found.")
-        return df
+        return pd.DataFrame()
         
     df['SMA_50'] = df['Close'].rolling(window=50).mean()
     df['SMA_200'] = df['Close'].rolling(window=200).mean()
