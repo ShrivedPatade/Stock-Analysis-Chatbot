@@ -9,7 +9,7 @@ newsapi = NewsApiClient(api_key=NEWS_API_KEY)
 
 def fetch_news(state: dict):
     """Retrieves news based on company name and stores it in JSON."""
-    query = state.get(state['company_name'], state["ticker"])
+    query = state.get("company_name", state.get("ticker"))
     print(f"Searching news for: {query}...")
     
     try:

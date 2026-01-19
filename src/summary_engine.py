@@ -5,7 +5,7 @@ genai.configure(api_key=GEMINI_API_KEY)
 
 def generate_final_report(state: dict):
     """Uses Gemini API for the final high-level synthesis."""
-    model = genai.GenerativeModel("gemini-2.0-flash")
+    model = genai.GenerativeModel("gemini-2.5-flash")
     
     prompt = f"""
     As a Senior Financial Analyst, provide a concise final report for {state['company_name']} ({state['ticker']}).
